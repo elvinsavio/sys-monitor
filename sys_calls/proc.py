@@ -16,26 +16,11 @@ class SystemStats:
     kernel: str
     uptime_hours: int
     uptime_minutes: int
-    memory_used_mib: int
     memory_total_mib: int
     cpu_model: str
     gpu_info: List[str]
     desktop_environment: str
     shell: str
-
-    def __str__(self):
-        """Custom string representation for easy printing."""
-        gpus = ", ".join(self.gpu_info)
-        return (
-            f"OS:     {self.distro}\n"
-            f"Kernel: {self.kernel}\n"
-            f"Uptime: {self.uptime_hours}h {self.uptime_minutes}m\n"
-            f"DE:     {self.desktop_environment}\n"
-            f"Shell:  {self.shell}\n"
-            f"CPU:    {self.cpu_model}\n"
-            f"Memory: {self.memory_used_mib}MiB / {self.memory_total_mib}MiB\n"
-            f"GPUs:   {gpus}"
-        )
 
 
 def get_gpu_info() -> List[str]:
@@ -71,7 +56,6 @@ def get_system_stats() -> SystemStats:
 
     # 3. Memory (Converted to MiB)
     mem = psutil.virtual_memory()
-    mem_used = mem.used // (1024**2)
     mem_total = mem.total // (1024**2)
 
     # 4. Hardware
@@ -89,7 +73,6 @@ def get_system_stats() -> SystemStats:
         kernel=kernel,
         uptime_hours=hours,
         uptime_minutes=minutes,
-        memory_used_mib=mem_used,
         memory_total_mib=mem_total,
         cpu_model=cpu_model,
         gpu_info=gpu_info,

@@ -57,6 +57,7 @@ h6 {
 p {
     text-wrap: pretty;
 }
+
 h1,
 h2,
 h3,
@@ -79,15 +80,23 @@ h6 {
     --primary: #13ec5b;
     --primary-dim: rgba(19, 236, 91, 0.1);
     --danger: #ef4444;
-    --background: #020402; /* background-dark */
-    --card: #121212; /* card-dark */
+    --background: #020402;
+    /* background-dark */
+    --card: #121212;
+    /* card-dark */
     --text: #ffffff;
 
     /* Typography */
     --font-display: "Space Grotesk", sans-serif;
 }
 
+html {
+    max-width: 1400px;
+    margin: auto;
+}
+
 body {
+    width: 100%;
     background-color: var(--background);
     color: var(--text);
     font-family: var(--font-display);
@@ -142,9 +151,6 @@ header {
 }
 
 section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 1rem 1.5rem;
     background-color: var(--card);
     border: 1px solid var(--primary-dim);
@@ -152,15 +158,117 @@ section {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+.system-information {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    h3 {
+        color: var(--primary);
+        font-size: 1.25rem;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--primary-dim);
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+
+            &:last-child {
+                grid-column: 1 / -1;
+            }
+
+            >div:first-child {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                height: 28px;
+                background: var(--primary-dim);
+                border-radius: 4px;
+                color: var(--primary);
+                flex-shrink: 0;
+
+                .material-symbols-outlined {
+                    font-size: 16px;
+                }
+            }
+
+            >div:last-child {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                overflow: hidden;
+
+                strong {
+                    font-size: 0.6rem;
+                    color: var(--primary);
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    opacity: 0.8;
+                    line-height: 1;
+                    margin-bottom: 2px;
+                }
+
+                >span {
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    color: var(--text);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 1.2;
+                }
+
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.25rem;
+                    margin-top: 2px;
+                    /* Slight spacing for the list */
+
+                    li {
+                        font-size: 0.85rem;
+                        color: var(--text);
+                        background: rgba(255, 255, 255, 0.05);
+                        padding: 1px 4px;
+                        border-radius: 3px;
+                        border: none;
+                        display: inline-block;
+                        /* Reset flex display from parent li */
+                    }
+                }
+            }
+        }
+    }
+}
+
 @keyframes pulse {
     0% {
         opacity: 1;
         transform: scale(1);
     }
+
     50% {
         opacity: 0.5;
         transform: scale(1.2);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);

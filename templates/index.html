@@ -1,44 +1,114 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>System Stats</title>
-        <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='style.css' ) }}"
-        />
 
-        <link href="https://fonts.googleapis.com" rel="preconnect" />
-        <link
-            crossorigin=""
-            href="https://fonts.gstatic.com"
-            rel="preconnect"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <header>
-            <h3>elvin@server</h3>
-            <div class="online">
-                <div></div>
-                <p>Online</p>
-            </div>
-        </header>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css' ) }}" />
 
-        <section>
-            <h3>System Info</h3>
-        </section>
-    </body>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h3>elvin@server</h3>
+        <div class="online">
+            <div></div>
+            <p>Online</p>
+        </div>
+    </header>
+
+    <section class="system-information">
+        <h3>System Info</h3>
+        <ul>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">computer</span>
+                </div>
+                <div>
+                    <strong>OS</strong>
+                    <span>{{ system_info.distro }}</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">settings_system_daydream</span>
+                </div>
+                <div>
+                    <strong>Kernel</strong>
+                    <span>{{ system_info.kernel }}</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">developer_board</span>
+                </div>
+                <div>
+                    <strong>CPU</strong>
+                    <span>{{ system_info.cpu_model }}</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">schedule</span>
+                </div>
+                <div>
+                    <strong>Uptime</strong>
+                    <span>{{ system_info.uptime_hours }}h {{ system_info.uptime_minutes }}m</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">memory</span>
+                </div>
+                <div>
+                    <strong>RAM</strong>
+                    <span>{{ system_info.memory_total_mib }} MiB</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">wallpaper</span>
+                </div>
+                <div>
+                    <strong>Desktop</strong>
+                    <span>{{ system_info.desktop_environment }}</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">terminal</span>
+                </div>
+                <div>
+                    <strong>Shell</strong>
+                    <span>{{ system_info.shell }}</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="material-symbols-outlined">videogame_asset</span>
+                </div>
+                <div>
+                    <strong>GPU(s)</strong>
+                    <ul>
+                        {% for gpu in system_info.gpu_info %}
+                        <li>{{ gpu }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </section>
+</body>
+
 </html>
