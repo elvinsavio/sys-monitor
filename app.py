@@ -8,6 +8,7 @@ from sys_calls.wifi import WifiData, get_wifi_info
 from sys_calls.cpu import CPUReport, get_cpu_stats
 from sys_calls.fan import FanReading, get_fan_stats
 from sys_calls.load import SystemLoadReport, get_system_load_stats
+from sys_calls.thermal import TemperatureReading, get_thermal_stats
 
 app = Flask(__name__)
 
@@ -63,3 +64,9 @@ def fan():
 def load():
     load_info = get_system_load_stats()
     return render_template("load.html", load_info=load_info)
+
+
+@app.get("/thermal")
+def thermal():
+    thermal_info = get_thermal_stats()
+    return render_template("thermal.html", thermal_info=thermal_info)
