@@ -239,8 +239,12 @@ section {
     }
 }
 
-.memory-information {}
-
+.disk-information {
+    .info-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 /* Reusable Components */
 
