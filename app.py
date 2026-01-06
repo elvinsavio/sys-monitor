@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-
+from typing import List
 from sys_calls.proc import SystemStats, get_system_stats
 from sys_calls.ram import MemoryStats, get_memory_usage
 from sys_calls.disk import DiskInfo, get_main_disk_report
@@ -7,6 +7,7 @@ from sys_calls.battery import BatteryData, get_battery_info
 from sys_calls.wifi import WifiData, get_wifi_info
 from sys_calls.cpu import CPUReport, get_cpu_stats
 from sys_calls.fan import FanReading, get_fan_stats
+from sys_calls.load import SystemLoadReport, get_system_load_stats
 
 app = Flask(__name__)
 
@@ -54,5 +55,11 @@ def cpu():
 
 @app.get("/fan")
 def fan():
-    fan_info = get_fan_stats()
+    fan_info: List[FanReading] = get_fan_stats()
     return render_template("fan.html", fan_info=fan_info)
+
+
+@app.get("/load")
+def load():
+    load_info = get_system_load_stats()
+    return render_template("load.html", load_info=load_info)
