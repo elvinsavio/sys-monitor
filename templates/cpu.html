@@ -1,0 +1,30 @@
+<li class="info-card col-span-full" style="flex-direction: column; align-items: stretch;">
+    <div style="display: flex; gap: 0.75rem; align-items: center;">
+        <div class="icon-box">
+            <span class="material-symbols-outlined">memory_alt</span>
+        </div>
+        <div class="info-details">
+            <strong>CPU ({{ cpu_info.physical_cores }}c / {{ cpu_info.logical_cores }}t) @ {{
+                cpu_info.current_freq_mhz|round|int }} MHz</strong>
+            <span>Usage: {{ cpu_info.total_load }}%</span>
+
+            <div class="progress-bar">
+                <div class="progress" style="width: {{ cpu_info.total_load }}%"></div>
+            </div>
+        </div>
+    </div>
+    <div class="core-grid">
+        {% for load in cpu_info.per_core_load %}
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div
+                style="display: flex; justify-content: space-between; font-size: var(--text-xs); color: rgba(255,255,255,0.7);">
+                <span>Core {{ loop.index }}</span>
+                <span>{{ load }}%</span>
+            </div>
+            <div class="progress-bar" style="margin-top: 0; height: 4px;">
+                <div class="progress" style="width: {{ load }}%"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</li>

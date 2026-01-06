@@ -138,6 +138,12 @@
             <ul class="info-grid" hx-get="/disk" hx-trigger="load, every 300s" hx-swap="innerHTML">
             </ul>
         </section>
+
+        <section class="cpu-information col-span-full">
+            <h3>CPU Info</h3>
+            <ul class="info-grid" hx-get="/cpu" hx-trigger="load, every 1s" hx-swap="innerHTML">
+            </ul>
+        </section>
     </div>
 </body>
 

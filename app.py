@@ -5,6 +5,7 @@ from sys_calls.ram import MemoryStats, get_memory_usage
 from sys_calls.disk import DiskInfo, get_main_disk_report
 from sys_calls.battery import BatteryData, get_battery_info
 from sys_calls.wifi import WifiData, get_wifi_info
+from sys_calls.cpu import CPUReport, get_cpu_stats
 
 app = Flask(__name__)
 
@@ -40,5 +41,11 @@ def battery():
 @app.get("/wifi")
 def wifi():
     wifi_info: WifiData = get_wifi_info()
-    print(wifi_info)
     return render_template("wifi.html", wifi_info=wifi_info)
+
+
+@app.get("/cpu")
+def cpu():
+    # interval=0 is non-blocking; returns stats since last call
+    cpu_info: CPUReport = get_cpu_stats(interval=0)
+    return render_template("cpu.html", cpu_info=cpu_info)
