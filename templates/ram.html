@@ -1,26 +1,24 @@
-<ul class="info-grid" hx-get="/mem" hx-trigger="intersect delay:5s" hx-swap="outerHTML">
-    <li class="info-card">
-        <div class="icon-box">
-            <span class="material-symbols-outlined">memory</span>
+<li class="info-card">
+    <div class="icon-box">
+        <span class="material-symbols-outlined">memory</span>
+    </div>
+    <div class="info-details">
+        <strong>RAM</strong>
+        <span>{{ memory_info.ram_used }} / {{ memory_info.ram_total }}</span>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ memory_info.ram_percent }}%"></div>
         </div>
-        <div class="info-details">
-            <strong>RAM</strong>
-            <span>{{ memory_info.ram_used }} / {{ memory_info.ram_total }}</span>
-            <div class="progress-bar">
-                <div class="progress" style="width: {{ memory_info.ram_percent }}%"></div>
-            </div>
+    </div>
+</li>
+<li class="info-card">
+    <div class="icon-box">
+        <span class="material-symbols-outlined">swap_horiz</span>
+    </div>
+    <div class="info-details">
+        <strong>Swap</strong>
+        <span>{{ memory_info.swap_used }} / {{ memory_info.swap_total }}</span>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ memory_info.swap_percent }}%"></div>
         </div>
-    </li>
-    <li class="info-card">
-        <div class="icon-box">
-            <span class="material-symbols-outlined">swap_horiz</span>
-        </div>
-        <div class="info-details">
-            <strong>Swap</strong>
-            <span>{{ memory_info.swap_used }} / {{ memory_info.swap_total }}</span>
-            <div class="progress-bar">
-                <div class="progress" style="width: {{ memory_info.swap_percent }}%"></div>
-            </div>
-        </div>
-    </li>
-</ul>
+    </div>
+</li>
