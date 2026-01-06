@@ -75,5 +75,5 @@ def thermal():
 
 @app.get("/network")
 def network():
-    net_info = get_session_data()
+    net_info: NetworkStats = get_session_data()
     return render_template("network.html", net_info=net_info)
