@@ -42,8 +42,12 @@ def get_gpu_info() -> List[str]:
 def get_system_stats() -> SystemStats:
     # 1. OS and Kernel
     try:
-        distro = platform.freedesktop_os_release().get("PRETTY_NAME", "Linux")
-    except AttributeError:
+        os_release = platform.freedesktop_os_release()
+        distro = os_release.get("PRETTY_NAME", "Linux")
+        # Obfuscate version numbers (e.g. "Ubuntu 22.04 LTS" -> "Ubuntu LTS")
+        # Removes sequences of digits and dots
+        distro = re.sub(r"\s\d+(\.\d+)*", "", distro).replace("  ", " ").strip()
+    except (AttributeError, OSError):
         distro = platform.system()
 
     display_release = platform.release()
