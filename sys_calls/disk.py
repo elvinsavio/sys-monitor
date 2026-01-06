@@ -1,5 +1,6 @@
 import psutil
 import platform
+import os
 from dataclasses import dataclass, asdict
 from typing import List, Dict
 
@@ -39,7 +40,9 @@ def get_main_disk_report() -> Dict[str, any]:
             is_main = part.mountpoint == system_root
             disk_data = DiskInfo(
                 device=part.device,
-                mountpoint=part.mountpoint,
+                mountpoint=part.mountpoint
+                if part.mountpoint == system_root
+                else f"/.../{os.path.basename(part.mountpoint)}",
                 filesystem=part.fstype,
                 total_gb=round(usage.total / (1024**3), 2),
                 used_gb=round(usage.used / (1024**3), 2),

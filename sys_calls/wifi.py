@@ -38,7 +38,7 @@ def _get_signal_strength(interface: str) -> int:
 def get_wifi_info():
     stats = psutil.net_if_stats()
     io_counters = psutil.net_io_counters(pernic=True)
-    addrs = psutil.net_if_addrs()
+    io_counters = psutil.net_io_counters(pernic=True)
 
     # Common Linux/Mac/Windows wireless prefixes
     # 'wl' covers wlp3s0, wlan0, etc.
@@ -50,17 +50,12 @@ def get_wifi_info():
             if info.isup:
                 io = io_counters.get(name)
 
-                # Get the IP Address (IPv4)
-                ip = "No IP"
-                if name in addrs:
-                    for addr in addrs[name]:
-                        if addr.family == 2:  # AF_INET (IPv4)
-                            ip = addr.address
+                # IP extraction removed as it is now masked (HIDDEN)
 
                 data = WifiData(
                     interface=name,
                     is_up=info.isup,
-                    ip_address=ip,
+                    ip_address="[HIDDEN]",
                     upload_mb=round(io.bytes_sent / (1024**2), 2),
                     download_mb=round(io.bytes_recv / (1024**2), 2),
                     signal_strength=_get_signal_strength(name),
