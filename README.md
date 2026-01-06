@@ -3,7 +3,7 @@
 System resource monitoring dashboard providing real-time hardware statistics.
 
 <p align="center">
-  <img src="images/Screenshot.png" alt="System Dashboard Screenshot" width="600">
+  <img src="images/screenshot.png" alt="System Dashboard Screenshot" width="600">
 </p>
 
 ## Features
