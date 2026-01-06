@@ -1,0 +1,24 @@
+<li>
+    <div>
+        <span class="material-symbols-outlined">memory</span>
+    </div>
+    <div>
+        <strong>RAM</strong>
+        <span>{{ memory_info.ram_used }} / {{ memory_info.ram_total }}</span>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ memory_info.ram_percent }}%"></div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <span class="material-symbols-outlined">swap_horiz</span>
+    </div>
+    <div>
+        <strong>Swap</strong>
+        <span>{{ memory_info.swap_used }} / {{ memory_info.swap_total }}</span>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ memory_info.swap_percent }}%"></div>
+        </div>
+    </div>
+</li>

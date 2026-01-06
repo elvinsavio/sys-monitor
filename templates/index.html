@@ -17,6 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+    <script src="{{ url_for('static', filename='htmx.js' ) }}"></script>
 </head>
 
 <body>
@@ -76,6 +77,7 @@
                     <span>{{ system_info.memory_total_mib }} MiB</span>
                 </div>
             </li>
+            <div hidden></div>
             <li>
                 <div>
                     <span class="material-symbols-outlined">wallpaper</span>
@@ -107,6 +109,12 @@
                     </ul>
                 </div>
             </li>
+        </ul>
+    </section>
+
+    <section class="memory-information">
+        <h3>Memory Info</h3>
+        <ul class="memory-grid" hx-get="/mem" hx-trigger="load, every 5s" hx-swap="innerHTML">
         </ul>
     </section>
 </body>
