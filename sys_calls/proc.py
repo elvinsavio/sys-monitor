@@ -46,7 +46,9 @@ def get_system_stats() -> SystemStats:
     except AttributeError:
         distro = platform.system()
 
-    kernel = platform.release()
+    display_release = platform.release()
+    major_version = display_release.split(".")[0]
+    kernel = f"Linux {major_version}.x.x-xx"
 
     # 2. Uptime
     with open("/proc/uptime", "r") as f:
