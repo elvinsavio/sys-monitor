@@ -305,3 +305,22 @@ section {
     display: grid;
     gap: 0.5rem;
 }
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-slow {
+    animation: spin 3s linear infinite;
+}
+
+.big-fan-icon {
+    font-size: 2rem !important;
+    /* Larger than standard icon */
+}

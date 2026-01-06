@@ -6,6 +6,7 @@ from sys_calls.disk import DiskInfo, get_main_disk_report
 from sys_calls.battery import BatteryData, get_battery_info
 from sys_calls.wifi import WifiData, get_wifi_info
 from sys_calls.cpu import CPUReport, get_cpu_stats
+from sys_calls.fan import FanReading, get_fan_stats
 
 app = Flask(__name__)
 
@@ -49,3 +50,9 @@ def cpu():
     # interval=0 is non-blocking; returns stats since last call
     cpu_info: CPUReport = get_cpu_stats(interval=0)
     return render_template("cpu.html", cpu_info=cpu_info)
+
+
+@app.get("/fan")
+def fan():
+    fan_info = get_fan_stats()
+    return render_template("fan.html", fan_info=fan_info)
