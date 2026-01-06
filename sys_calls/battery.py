@@ -25,7 +25,7 @@ def get_battery_info():
         plugged_text = "Not Plugged In"
 
     data = BatteryData(
-        percentage=battery.percent,
+        percentage=int(battery.percent),
         is_plugged=battery.power_plugged,
         minutes_left=None if battery.secsleft <= 0 else round(battery.secsleft / 60),
         status=status,
