@@ -112,7 +112,7 @@
         </ul>
     </section>
 
-    <div class="monitor-grid">
+    <div class="wifi-block">
         <section class="wifi-information">
             <h3>Wi-Fi</h3>
             <ul class="info-grid">
@@ -126,58 +126,57 @@
                 <li hx-get="/network" hx-trigger="intersect" hx-swap="outerHTML"></li>
             </ul>
         </section>
-
-        <section class="battery-information">
-            <h3>Battery</h3>
-            <ul class="info-grid">
-                <li hx-get="/battery" hx-trigger="intersect" hx-swap="outerHTML"></li>
-            </ul>
-        </section>
-
-        <section class="memory-information">
-            <h3>Memory</h3>
-            <ul class="info-grid" hx-get="/mem" hx-trigger="intersect" hx-swap="outerHTML">
-                <!-- Loading... -->
-            </ul>
-        </section>
-
-        <section class="disk-information">
-            <h3>Disk</h3>
-            <ul class="info-grid" hx-get="/disk" hx-trigger="intersect" hx-swap="outerHTML">
-                <!-- Loading... -->
-            </ul>
-        </section>
-
-        <section class="cpu-information col-span-full">
-            <h3>CPU</h3>
-            <ul class="info-grid">
-                <li hx-get="/cpu" hx-trigger="intersect" hx-swap="outerHTML"></li>
-            </ul>
-        </section>
-
-        <section class="load-information col-span-full">
-            <h3>System Load</h3>
-            <ul class="info-grid">
-                <li hx-get="/load" hx-trigger="intersect" hx-swap="outerHTML"></li>
-            </ul>
-        </section>
-
-        <section class="fan-information col-span-full">
-            <h3>Fan</h3>
-            <ul class="info-grid">
-                <li hx-get="/fan" hx-trigger="intersect" hx-swap="outerHTML"></li>
-            </ul>
-        </section>
-
-        <section class="thermal-information col-span-full">
-            <h3>Temperature</h3>
-            <ul class="info-grid">
-                <li hx-get="/thermal" hx-trigger="intersect" hx-swap="outerHTML"></li>
-            </ul>
-        </section>
-
-
     </div>
+
+    <section class="battery-information">
+        <h3>Battery</h3>
+        <ul class="info-grid">
+            <li hx-get="/battery" hx-trigger="intersect" hx-swap="outerHTML"></li>
+        </ul>
+    </section>
+
+    <section class="memory-information">
+        <h3>Memory</h3>
+        <ul class="info-grid" hx-get="/mem" hx-trigger="intersect" hx-swap="outerHTML">
+        </ul>
+    </section>
+
+    <section class="disk-information">
+        <h3>Disk</h3>
+        <ul class="info-grid" hx-get="/disk" hx-trigger="intersect" hx-swap="outerHTML">
+            <!-- Loading... -->
+        </ul>
+    </section>
+
+    <section class="cpu-information col-span-full">
+        <h3>CPU</h3>
+        <ul class="info-grid">
+            <li hx-get="/cpu" hx-trigger="intersect" hx-swap="outerHTML"></li>
+        </ul>
+    </section>
+
+    <section class="load-information col-span-full">
+        <h3>System Load</h3>
+        <ul class="info-grid">
+            <li hx-get="/load" hx-trigger="intersect" hx-swap="outerHTML"></li>
+        </ul>
+    </section>
+
+    <section class="fan-information col-span-full">
+        <h3>Fan</h3>
+        <ul class="info-grid">
+            <li hx-get="/fan" hx-trigger="intersect" hx-swap="outerHTML"></li>
+        </ul>
+    </section>
+
+    <section class="thermal-information col-span-full">
+        <h3>Temperature</h3>
+        <ul class="info-grid">
+            <li hx-get="/thermal" hx-trigger="intersect" hx-swap="outerHTML"></li>
+        </ul>
+    </section>
+
+
 </body>
 
 </html>
