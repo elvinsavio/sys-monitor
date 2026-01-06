@@ -1,0 +1,24 @@
+<li class="info-card col-span-full" hx-get="/network" hx-trigger="intersect delay:2s" hx-swap="outerHTML">
+    {% if net_info %}
+    <div style="display: flex; gap: 1rem; align-items: center; width: 100%;">
+        <div class="icon-box">
+            <span class="material-symbols-outlined">language</span>
+        </div>
+        <div class="info-details" style="flex: 1;">
+            <strong>Download/Upload</strong>
+            <div style="display: flex; gap: 1rem; margin-top: 0.25rem;">
+                <span title="Downloaded"><span class="material-symbols-outlined"
+                        style="font-size: 1rem; vertical-align: middle;">arrow_downward</span> {{ net_info.rx_mb }}
+                    MB</span>
+                <span title="Uploaded"><span class="material-symbols-outlined"
+                        style="font-size: 1rem; vertical-align: middle;">arrow_upward</span> {{ net_info.tx_mb }}
+                    MB</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div style="padding: 1rem; text-align: center; color: rgba(255,255,255,0.5);">
+        No active network interface
+    </div>
+    {% endif %}
+</li>

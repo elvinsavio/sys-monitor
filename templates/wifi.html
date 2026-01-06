@@ -8,14 +8,6 @@
         <span>
             Strength: {{ wifi_info.signal_strength }}%
         </span>
-        <div style="font-size: var(--text-xs); color: rgba(255, 255, 255, 0.5); margin-top: 4px;">
-            <span class="material-symbols-outlined"
-                style="font-size: inherit; vertical-align: middle;">arrow_upward</span>
-            {{ wifi_info.upload_mb }} MB
-            <span class="material-symbols-outlined"
-                style="font-size: inherit; vertical-align: middle; margin-left: 8px;">arrow_downward</span>
-            {{ wifi_info.download_mb }} MB
-        </div>
     </div>
 </li>
 {% endif %}

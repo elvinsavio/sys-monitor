@@ -120,6 +120,13 @@
             </ul>
         </section>
 
+        <section class="network-information">
+            <h3>Session Net</h3>
+            <ul class="info-grid">
+                <li hx-get="/network" hx-trigger="intersect" hx-swap="outerHTML"></li>
+            </ul>
+        </section>
+
         <section class="battery-information">
             <h3>Battery</h3>
             <ul class="info-grid">
@@ -161,6 +168,7 @@
                 <li hx-get="/fan" hx-trigger="intersect" hx-swap="outerHTML"></li>
             </ul>
         </section>
+
         <section class="thermal-information col-span-full">
             <h3>Temperature</h3>
             <ul class="info-grid">
