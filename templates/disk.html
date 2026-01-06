@@ -1,0 +1,29 @@
+{% if disk_info.system_disk %}
+<li class="info-card">
+    <div class="icon-box">
+        <span class="material-symbols-outlined">hard_drive</span>
+    </div>
+    <div class="info-details">
+        <strong>Sys ({{ disk_info.system_disk.mountpoint }})</strong>
+        <span>{{ disk_info.system_disk.used_gb }}GB / {{ disk_info.system_disk.total_gb }}GB</span>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ disk_info.system_disk.percentage }}%"></div>
+        </div>
+    </div>
+</li>
+{% endif %}
+
+{% for disk in disk_info.other_disks %}
+<li class="info-card">
+    <div class="icon-box">
+        <span class="material-symbols-outlined">dns</span>
+    </div>
+    <div class="info-details">
+        <strong>{{ disk.mountpoint }}</strong>
+        <span>{{ disk.used_gb }}GB / {{ disk.total_gb }}GB</span>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ disk.percentage }}%"></div>
+        </div>
+    </div>
+</li>
+{% endfor %}

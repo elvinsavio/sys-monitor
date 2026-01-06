@@ -1,0 +1,23 @@
+{% if battery_info %}
+<li class="info-card">
+    <div class="icon-box">
+        <span class="material-symbols-outlined">
+            {% if battery_info.is_plugged %}
+            battery_charging_full
+            {% else %}
+            battery_full
+            {% endif %}
+        </span>
+    </div>
+    <div class="info-details">
+        <strong>Battery ({{ battery_info.percentage }}%) ({{ battery_info.plugged_text }})</strong>
+        <span>{{ battery_info.status }}</span>
+        {% if battery_info.minutes_left %}
+        <span>{{ battery_info.minutes_left }} min remaining</span>
+        {% endif %}
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ battery_info.percentage }}%"></div>
+        </div>
+    </div>
+</li>
+{% endif %}

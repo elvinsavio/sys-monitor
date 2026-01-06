@@ -112,11 +112,33 @@
         </ul>
     </section>
 
-    <section class="memory-information">
-        <h3>Memory Info</h3>
-        <ul class="info-grid" hx-get="/mem" hx-trigger="load, every 5s" hx-swap="innerHTML">
-        </ul>
-    </section>
+    <div class="monitor-grid">
+        <section class="wifi-information">
+            <h3>Wi-Fi</h3>
+            <ul class="info-grid">
+                <div hx-get="/wifi" hx-trigger="load, every 5s" hx-swap="outerHTML"></div>
+            </ul>
+        </section>
+
+        <section class="battery-information">
+            <h3>Battery</h3>
+            <ul class="info-grid">
+                <div hx-get="/battery" hx-trigger="load, every 60s" hx-swap="outerHTML"></div>
+            </ul>
+        </section>
+
+        <section class="memory-information">
+            <h3>Memory Info</h3>
+            <ul class="info-grid" hx-get="/mem" hx-trigger="load, every 5s" hx-swap="innerHTML">
+            </ul>
+        </section>
+
+        <section class="disk-information">
+            <h3>Disk Info</h3>
+            <ul class="info-grid" hx-get="/disk" hx-trigger="load, every 300s" hx-swap="innerHTML">
+            </ul>
+        </section>
+    </div>
 </body>
 
 </html>
