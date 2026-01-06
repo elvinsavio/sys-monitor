@@ -31,76 +31,76 @@
 
     <section class="system-information">
         <h3>System Info</h3>
-        <ul>
-            <li>
-                <div>
+        <ul class="info-grid">
+            <li class="info-card">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">computer</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>OS</strong>
                     <span>{{ system_info.distro }}</span>
                 </div>
             </li>
-            <li>
-                <div>
+            <li class="info-card">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">settings_system_daydream</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>Kernel</strong>
                     <span>{{ system_info.kernel }}</span>
                 </div>
             </li>
-            <li>
-                <div>
+            <li class="info-card">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">developer_board</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>CPU</strong>
                     <span>{{ system_info.cpu_model }}</span>
                 </div>
             </li>
-            <li>
-                <div>
+            <li class="info-card">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">schedule</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>Uptime</strong>
                     <span>{{ system_info.uptime_hours }}h {{ system_info.uptime_minutes }}m</span>
                 </div>
             </li>
-            <li>
-                <div>
+            <li class="info-card">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">memory</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>RAM</strong>
                     <span>{{ system_info.memory_total_mib }} MiB</span>
                 </div>
             </li>
             <div hidden></div>
-            <li>
-                <div>
+            <li class="info-card">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">wallpaper</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>Desktop</strong>
                     <span>{{ system_info.desktop_environment }}</span>
                 </div>
             </li>
-            <li>
-                <div>
+            <li class="info-card">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">terminal</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>Shell</strong>
                     <span>{{ system_info.shell }}</span>
                 </div>
             </li>
-            <li>
-                <div>
+            <li class="info-card col-span-full">
+                <div class="icon-box">
                     <span class="material-symbols-outlined">videogame_asset</span>
                 </div>
-                <div>
+                <div class="info-details">
                     <strong>GPU(s)</strong>
                     <ul>
                         {% for gpu in system_info.gpu_info %}
@@ -114,7 +114,7 @@
 
     <section class="memory-information">
         <h3>Memory Info</h3>
-        <ul class="memory-grid" hx-get="/mem" hx-trigger="load, every 5s" hx-swap="innerHTML">
+        <ul class="info-grid" hx-get="/mem" hx-trigger="load, every 5s" hx-swap="innerHTML">
         </ul>
     </section>
 </body>

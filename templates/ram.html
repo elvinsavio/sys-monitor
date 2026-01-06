@@ -1,8 +1,8 @@
-<li>
-    <div>
+<li class="info-card">
+    <div class="icon-box">
         <span class="material-symbols-outlined">memory</span>
     </div>
-    <div>
+    <div class="info-details">
         <strong>RAM</strong>
         <span>{{ memory_info.ram_used }} / {{ memory_info.ram_total }}</span>
         <div class="progress-bar">
@@ -10,11 +10,11 @@
         </div>
     </div>
 </li>
-<li>
-    <div>
+<li class="info-card">
+    <div class="icon-box">
         <span class="material-symbols-outlined">swap_horiz</span>
     </div>
-    <div>
+    <div class="info-details">
         <strong>Swap</strong>
         <span>{{ memory_info.swap_used }} / {{ memory_info.swap_total }}</span>
         <div class="progress-bar">
