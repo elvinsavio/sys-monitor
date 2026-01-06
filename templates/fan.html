@@ -1,4 +1,4 @@
-<li class="info-card col-span-full" hx-get="/fan" hx-trigger="intersect delay:5s" hx-swap="outerHTML">
+<li class="info-card col-span-full" hx-get="/fan" hx-trigger="load delay:5s" hx-swap="outerHTML">
     {% if fan_info %}
     {% for fan in fan_info %}
     <div style="display: flex; gap: 1rem; align-items: center; width: 100%;">
