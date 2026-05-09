@@ -1,18 +1,24 @@
-<li class="info-card col-span-full" hx-get="/network" hx-trigger="intersect delay:2s" hx-swap="outerHTML">
+<li class="info-card col-span-full" hx-get="/network" hx-trigger="load delay:2s" hx-swap="outerHTML">
     {% if net_info %}
     <div style="display: flex; gap: 1rem; align-items: center; width: 100%;">
         <div class="icon-box">
             <span class="material-symbols-outlined">language</span>
         </div>
         <div class="info-details" style="flex: 1;">
-            <strong>Download/Upload</strong>
-            <div style="display: flex; gap: 1rem; margin-top: 0.25rem;">
-                <span title="Downloaded"><span class="material-symbols-outlined"
-                        style="font-size: 1rem; vertical-align: middle;">arrow_downward</span> {{ net_info.rx_mb }}
-                    MB</span>
-                <span title="Uploaded"><span class="material-symbols-outlined"
-                        style="font-size: 1rem; vertical-align: middle;">arrow_upward</span> {{ net_info.tx_mb }}
-                    MB</span>
+            <strong>{{ net_info.interface }}</strong>
+            <div style="display: flex; gap: 1.5rem; margin-top: 0.25rem;">
+                <span title="Download speed">
+                    <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle;">arrow_downward</span>
+                    {{ net_info.rx_rate_mbps }} MB/s
+                </span>
+                <span title="Upload speed">
+                    <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle;">arrow_upward</span>
+                    {{ net_info.tx_rate_mbps }} MB/s
+                </span>
+            </div>
+            <div style="display: flex; gap: 1.5rem; margin-top: 0.15rem; font-size: var(--text-xs); color: rgba(255,255,255,0.4);">
+                <span>Session: {{ net_info.rx_mb }} MB received</span>
+                <span>{{ net_info.tx_mb }} MB sent</span>
             </div>
         </div>
     </div>

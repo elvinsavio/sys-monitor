@@ -1,5 +1,5 @@
 import psutil
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from typing import Optional
 
 
@@ -31,4 +31,4 @@ def get_battery_info():
         status=status,
         plugged_text=plugged_text,
     )
-    return asdict(data)
+    return data

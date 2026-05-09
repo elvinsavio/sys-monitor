@@ -1,0 +1,20 @@
+<li class="info-card col-span-full" style="flex-direction: column; align-items: stretch;"
+    hx-get="/processes" hx-trigger="load delay:2s" hx-swap="outerHTML">
+    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 0.5rem; padding: 0.25rem 0.5rem;
+        font-size: var(--text-xs); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em;
+        border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <span>Name</span>
+        <span>PID</span>
+        <span>CPU</span>
+        <span>Mem</span>
+    </div>
+    {% for proc in proc_list %}
+    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 0.5rem; padding: 0.25rem 0.5rem;
+        font-size: var(--text-sm); border-bottom: 1px solid rgba(255,255,255,0.03);">
+        <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="{{ proc.name }}">{{ proc.name }}</span>
+        <span style="color: rgba(255,255,255,0.4);">{{ proc.pid }}</span>
+        <span style="color: {{ 'var(--danger)' if proc.cpu_percent > 50 else 'var(--text)' }}">{{ proc.cpu_percent }}%</span>
+        <span>{{ proc.memory_percent }}%</span>
+    </div>
+    {% endfor %}
+</li>

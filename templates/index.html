@@ -14,10 +14,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
     <script src="{{ url_for('static', filename='htmx.js' ) }}"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/static/sw.js');
+        }
+    </script>
 </head>
 
 <body>
@@ -77,7 +79,6 @@
                     <span>{{ system_info.memory_total_mib }} MiB</span>
                 </div>
             </li>
-            <div hidden></div>
             <li class="info-card">
                 <div class="icon-box">
                     <span class="material-symbols-outlined">wallpaper</span>
@@ -173,6 +174,13 @@
         <h3>Temperature</h3>
         <ul class="info-grid">
             <li hx-get="/thermal" hx-trigger="intersect" hx-swap="outerHTML"></li>
+        </ul>
+    </section>
+
+    <section class="processes-information col-span-full">
+        <h3>Top Processes</h3>
+        <ul class="info-grid">
+            <li hx-get="/processes" hx-trigger="intersect" hx-swap="outerHTML"></li>
         </ul>
     </section>
 

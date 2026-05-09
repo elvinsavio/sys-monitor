@@ -17,9 +17,8 @@ def get_cpu_stats(interval: float = 1.0) -> CPUReport:
     Gathers CPU metrics and returns a structured CPUReport.
     :param interval: Seconds to sample for CPU load.
     """
-    # Get load first (takes 'interval' seconds)
     per_core = psutil.cpu_percent(interval=interval, percpu=True)
-    total = psutil.cpu_percent()
+    total = round(sum(per_core) / len(per_core), 1)
 
     # Get counts and frequency
     physical = psutil.cpu_count(logical=False)

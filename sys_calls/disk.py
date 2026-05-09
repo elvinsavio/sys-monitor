@@ -2,7 +2,7 @@ import psutil
 import platform
 import os
 from dataclasses import dataclass, asdict
-from typing import List, Dict
+from typing import Dict
 
 
 @dataclass

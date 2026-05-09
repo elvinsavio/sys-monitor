@@ -1,5 +1,5 @@
 import psutil
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 
 
 @dataclass
@@ -38,7 +38,6 @@ def _get_signal_strength(interface: str) -> int:
 def get_wifi_info():
     stats = psutil.net_if_stats()
     io_counters = psutil.net_io_counters(pernic=True)
-    io_counters = psutil.net_io_counters(pernic=True)
 
     # Common Linux/Mac/Windows wireless prefixes
     # 'wl' covers wlp3s0, wlan0, etc.
@@ -60,6 +59,6 @@ def get_wifi_info():
                     download_mb=round(io.bytes_recv / (1024**2), 2),
                     signal_strength=_get_signal_strength(name),
                 )
-                return asdict(data)
+                return data
 
     return None

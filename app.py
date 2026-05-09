@@ -1,8 +1,7 @@
 from flask import Flask, render_template
-from typing import List
 from sys_calls.proc import SystemStats, get_system_stats
 from sys_calls.ram import MemoryStats, get_memory_usage
-from sys_calls.disk import DiskInfo, get_main_disk_report
+from sys_calls.disk import get_main_disk_report
 from sys_calls.battery import BatteryData, get_battery_info
 from sys_calls.wifi import WifiData, get_wifi_info
 from sys_calls.cpu import CPUReport, get_cpu_stats
@@ -10,6 +9,7 @@ from sys_calls.fan import FanReading, get_fan_stats
 from sys_calls.load import SystemLoadReport, get_system_load_stats
 from sys_calls.thermal import TemperatureReading, get_thermal_stats
 from sys_calls.network import NetworkStats, get_session_data
+from sys_calls.top_procs import ProcessInfo, get_top_processes
 
 app = Flask(__name__)
 
@@ -30,7 +30,7 @@ def mem():
 
 @app.get("/disk")
 def disk():
-    disk_info: DiskInfo = get_main_disk_report()
+    disk_info = get_main_disk_report()
 
     return render_template("disk.html", disk_info=disk_info)
 
@@ -50,7 +50,6 @@ def wifi():
 
 @app.get("/cpu")
 def cpu():
-    # interval=0 is non-blocking; returns stats since last call
     cpu_info: CPUReport = get_cpu_stats(interval=0)
     return render_template("cpu.html", cpu_info=cpu_info)
 
@@ -77,3 +76,9 @@ def thermal():
 def network():
     net_info: NetworkStats = get_session_data()
     return render_template("network.html", net_info=net_info)
+
+
+@app.get("/processes")
+def processes():
+    proc_list: list[ProcessInfo] = get_top_processes()
+    return render_template("processes.html", proc_list=proc_list)
